@@ -1,0 +1,36 @@
+<html>
+    <body>
+
+        <title>Document </title>
+        <h2>Edit Message</h2>
+        {% for x in data %}
+        <form method="post" action="">
+            {% csrf_token %}
+            <table border="1" align="center">
+                <tr>
+                    <td>name</td>
+                    <td><input type="text" name="uname" placeholder="enter name" value="{{x.name}}"></td><br>
+                </tr>
+                    <td>email</td>
+                    <td><input type="text" name="uemail" placeholder="enter email" value="{{x.email}}"></td><br>
+                  
+                <tr>
+                    <td>mobile</td>
+                    <td><input type="text" name="umob" placeholder="enter mobile" value="{{x.mobile}}"></td><br>
+                </tr>
+
+                <tr>
+                    <td>msg</td>
+                    <td><input type="text" name="msg" placeholder="enter text" value="{{x.msg}}"></td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" value="update"></td>
+                </tr>
+               
+            </table>
+        </form>
+        {% endfor %}
+    </body>
+</html>
+

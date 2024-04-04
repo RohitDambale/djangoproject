@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<div class="row">
+    <div class="col-md-9 p-2">
+        <h5 class="bg-danger text-white">Customer Details</h5>
+        {% for x in Products %}
+            {% if forloop.counter == 1 %}
+        <p><strong>Name:</strong>&nbsp;&nbsp;{{x.uid.first_name}}</p>
+        <p><strong>Mobile:</strong>&nbsp;&nbsp;9898989898</p>
+        <p><strong>email:</strong>&nbsp;&nbsp;{{x.uid.email}}</p>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-3 p-2">
+        <h5 class="bg-danger text-white">Total Amount</h5>
+        <p><strong>Total({{n}} items):</strong>&nbsp;&nbsp;Rs.{{Total}}</p>
+        <p><strong>Total Amount:</strong>&nbsp;&nbsp;Rs{{Total}}</p>
+        <a href="/placeorder"><button class="btn btn-danger">Place Order</button></a>
+
+    </div>
+
+
+</div>
+
+
+<h5 class="bg-danger text-white ">Cart Deatils</h5>
+<div class="row">
+    {% for x in Products %}
+    <div class="col-md-4">
+        <img src="{{x.pid.pimage.url}}" width="90px" height="90px">
+    </div>
+    <div class="col-md-8">
+        <p><strong>Product Name:</strong>&nbsp;&nbsp;{{x.pid.name}}</p>
+        <p><strong>Price:</strong>&nbsp;&nbsp;{{x.pid.price}}</p>
+        {% if x.pid.cat == 2 %}
+        <p><strong>Category:</strong>&nbsp;&nbsp;Mobile</p>
+        {% elif x.pid.cat == 3 %}
+        <p><strong>Category:</strong>&nbsp;&nbsp;Shoes</p>
+        {% else %}
+        <p><strong>Category:</strong>&nbsp;&nbsp;clothes</p>
+        {% endif %}
+        <p>
+            <strong>QTY:</strong>
+            <a href="/updateqty/0/{{x.id}}"><button class="btn btn-danger">-</button></a>
+            <input type="number" value="{{x.qty}}">
+            <a href="/updateqty/1/{{x.id}}"><button class="btn btn-success">+</button></a>
+        </p>
+
+        <a href="/remove/{{x.id}}"><button class="btn btn-danger">Remove</button></a>
+     
+    </div>
+    {% endfor %}
+    
+    </div>
+    
+
+{% endblock 'main'  %}
+
+
+<!--<div class="row">
+    <div class="col-md-4 bg-success p-3"> 
+        <h4>Address</h4>
+        <hr>
+        Second floor, landmark building<br>
+        near f.c.college<br>
+        pune-411002<br>
+        Maharashtra<br>
+        contact:7878787878       
+    </div>
+
+    <div class="col-md-4 bg-light p-2">
+        <a href="index2.html" class="anchor"><strong>Home</strong></a><br>
+        <a href="contact.html" class="anchor"><strong>Contact</strong></a><br>
+        <a href="about.html" class="anchor"><strong>About</strong></a><br>
+    </div>-->
+
